@@ -14,6 +14,7 @@
 |------|------|
 | `architecture/philosophy.md` | 架构设计与工程哲学——治理驱动、跨中心部署、编排层、认知摩擦、自传播 |
 | `architecture/evolution.md` | 演化路径与边界——DevOps 作为核心底座、Skill 组合、单仓模式、持续暴露的新边界 |
+| `architecture/design-philosophy.md` | 设计哲学深度对话——确定性分层、认知窗口、人机协作范式、稀缺性分析 |
 
 ## 工程实践 (engineering/)
 
