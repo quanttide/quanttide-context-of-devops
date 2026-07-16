@@ -19,6 +19,7 @@
 | `architecture/git-lib.md` | Git 库选型分析——git2 vs CLI git vs gix（gitoxide），Monorepo 性能对比 |
 | `architecture/cli-architect-review.md` | CLI 架构师视角评估——现有能力的成熟度分析、7 个不足、核心差距 |
 | `architecture/cli-code-status-v2.md` | `code status` v2 设计——基于架构缺口，扩展为代码架构健康状态视图：依赖图、一致性、质量趋势 |
+| `architecture/cli-code-status-v2-defects.md` | 实现 v2 暴露的架构缺陷——9 个缺陷分析，核心矛盾：聚合视图 vs 单一职责命令架构 |
 
 ## 工程实践 (engineering/)
 
