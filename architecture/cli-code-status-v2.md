@@ -133,83 +133,7 @@ pub enum TrendDirection {
 }
 ```
 
----
-
-## 三、命令接口
-
-```bash
-# 基础用法（默认输出概要）
-qtcloud-devops code status
-
-# 完整信息（展开所有 section）
-qtcloud-devops code status -v
-
-# 仅查看依赖图
-qtcloud-devops code status --section deps
-
-# 仅查看一致性
-qtcloud-devops code status --section consistency
-
-# JSON 输出（供工具/Agent 消费）
-qtcloud-devops code status --json
-```
-
-### 默认输出（概要）
-
-```
-代码架构状态
-────────────────────────────────────────
-  子模块:       ✅ 全部同步（12/12）
-  模块依赖:     42 个内部依赖, 0 个循环
-  跨 scope 一致性:
-    Rust 版本:  ⚠ 不一致（cli: 1.75, web: 1.78）
-    公共依赖:   ✅ 全部一致（23 个共享）
-    CI 模板:    ✅ 统一
-  质量趋势:     📈 改善中（最近审计: 7/9 通过, 较上次 +1）
-```
-
-### 详细输出（-v）
-
-```
-代码架构状态
-────────────────────────────────────────
-
-  📦 子模块同步
-    ✅ 全部同步（12/12）
-
-  🔗 模块依赖图
-    ┌─ cli/ ─────────────────────────────┐
-    │  → quanttide-devops (workspace)     │
-    │  → gix, git2, serde, clap, ...      │
-    │  ← (被依赖: plan/, release/)        │
-    └─────────────────────────────────────┘
-    ┌─ plan/ ─────────────────────────────┐
-    │  → cli/ (quanttide-devops-cli)      │
-    │  → source::roadmap                  │
-    └─────────────────────────────────────┘
-    内部依赖: 42 | 外部依赖: 186 | 循环: 0
-
-  ⚖️ 跨 scope 一致性
-    Rust 版本:
-      ❌ cli:   edition 2021, rust-version 1.75
-      ❌ web:   edition 2021, rust-version 1.78
-      ❌ core:  edition 2021, rust-version 未设置
-    公共依赖版本:
-      ✅ serde:    1.0 (cli, web, core)
-      ⚠  thiserror: 2.0 (cli) vs 1.0 (web)
-    工作流:
-      ✅ 全部 scope 共用 build-rust.yml
-
-  📈 质量趋势
-    上次审计: 2026-07-15T10:00:00Z
-    7/9 规则通过 (较上次 +1)
-    新发现: 2 | 已修复: 3 | 持续未修复: 5
-    趋势: 📈 改善中
-```
-
----
-
-## 四、数据来源
+## 三、数据来源
 
 | Section | 数据来源 | 速度 |
 |---------|----------|------|
@@ -228,7 +152,7 @@ qtcloud-devops code status --json
 
 ---
 
-## 五、与现有命令的关系
+## 四、与现有命令的关系
 
 ```mermaid
 graph LR
@@ -253,33 +177,7 @@ graph LR
 
 ---
 
-## 六、实现路径
-
-### Phase 1: 模型与 CLI 接口
-- 定义新的 `CodeStatus` 数据结构
-- 扩展 `CodeAction::Status` 添加 `--section`、`-v`、`--json` 参数
-- 保持现有 `SyncSection` 逻辑不变
-
-### Phase 2: `deps` section
-- 实现 `cargo metadata` 解析器（过滤 scope 内的 crate）
-- 构建 `ModuleNode` 图（有向图，scope + internal crates）
-- 检测循环依赖（DFS + 三色标记）
-- 检测跨 scope 引用（from scope A → scope B 的 `use` 路径）
-
-### Phase 3: `consistency` section
-- 遍历 scope `Cargo.toml`，比较 `edition`/`rust-version`
-- 公共依赖版本对比（取所有 scope 都引用的 crate，比较版本）
-- CI 工作流引用一致性检查
-- 可选: lint 配置一致性（`clippy.toml` / `.rustfmt.toml`）
-
-### Phase 4: `health` section
-- 定义 audit snapshot 存储格式（JSON 行文件，追加写入）
-- `code audit` 完成时写入快照
-- `code status` 读取最近两次快照计算趋势
-
----
-
-## 七、未解决的开放问题
+## 五、未解决的开放问题
 
 1. **跨语言依赖图**：当前只考虑 Rust（Cargo.toml），Python/Poetry 和 Go modules 的依赖如何纳入？
 2. **`deps` section 的精度下限**：是只展示 scope 级别的粗粒度图，还是深入到每个 crate 的细粒度图？粗粒度速度快但信息量少，细粒度慢但能发现循环依赖。
