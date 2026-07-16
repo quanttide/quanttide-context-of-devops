@@ -18,6 +18,7 @@
 | `architecture/rust-best-practice.md` | Rust 工程实践——Trait 抽象替代 Mock、沙箱测试、单体 vs 集成测试的分工 |
 | `architecture/git-lib.md` | Git 库选型分析——git2 vs CLI git vs gix（gitoxide），Monorepo 性能对比 |
 | `architecture/cli-architect-review.md` | CLI 架构师视角评估——现有能力的成熟度分析、7 个不足、核心差距 |
+| `architecture/cli-code-status-v2.md` | `code status` v2 设计——基于架构缺口，扩展为代码架构健康状态视图：依赖图、一致性、质量趋势 |
 
 ## 工程实践 (engineering/)
 
