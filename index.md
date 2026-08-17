@@ -20,6 +20,7 @@
 | `architecture/cli-architect-review.md` | CLI 架构师视角评估——现有能力的成熟度分析、7 个不足、核心差距 |
 | `architecture/cli-code-status-v2.md` | `code status` v2 设计——基于架构缺口，扩展为代码架构健康状态视图：依赖图、一致性、质量趋势 |
 | `architecture/cli-code-status-v2-defects.md` | 实现 v2 暴露的架构缺陷——9 个缺陷分析，核心矛盾：聚合视图 vs 单一职责命令架构 |
+| `architecture/provider-studio-positioning.md` | provider/studio 产品定位澄清——cli 引擎 / provider 网关 / studio 视图三层职责，与 qtcloud-secret 的同与不同 |
 
 ## 工程实践 (engineering/)
 
