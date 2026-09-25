@@ -28,3 +28,4 @@
 |------|------|
 | `engineering/autonomy-maturity.md` | DevOps 工具自治与版本成熟度——版本管理、status/doctor、Scope 契约、成熟度模型 |
 | `engineering/bootstrapping-knowledge.md` | 自举内源与知识管理——自举能力、内源范式、文档即代码、隐性知识显性化 |
+| `engineering/self-bootstrapping.md` | 自举的两种范式——应用用自己发布自己、库被消费者验证，以及两者的对照 |
